@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Web Page</title>
+</head>
+
+<body>
+
+<div class="main">
+
+<h3>     Movie List   </h3>
+
+<form action="/add" method="POST">
+<input id="addname" type="text" name="addname" placeholder="Add Movie">
+<input id="  add  " type ="submit"   value="   Add  ">
+</form>
+
+<form action="/search" method="POST">
+<input id="searchname" type="text" name="searchname" placeholder="Search Movie">
+<input id="search" type ="submit" value="Search">
+</form>
+
+
+<table border="5">
+
+<tr>
+
+<th>Title</th>
+<th>Delete</th>
+</tr>
+{% for movies in movies %}
+<tr>
+<td><form action="/edit" method="POST" style="display: inline">
+<input style="border: 0;" width="300px" type="hidden" value="{{movies.movie_name}}" name="oldtitle">
+<input style="border: 0;" width="300px" type="text" value="{{movies.movie_name}}" name="newtitle">
+<input type="submit" value="UPDATE">
+</form>
+</td>
+<td><a href="/delete/{{movies.movie_name}}">Delete</a></td>
+</tr>
+{% endfor %}
+
+</table>
+
+
+
+</div>
+
+</body>
+
+</html>
